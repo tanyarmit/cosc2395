@@ -1,3 +1,5 @@
+import fleet.Car;
+
 public class Garage {
     public static void main(String[] args) {
 
