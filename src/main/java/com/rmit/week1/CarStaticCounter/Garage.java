@@ -1,3 +1,4 @@
+package com.rmit.week1.CarStaticCounter;
 public class Garage{
   public static void main(String[] args){
     Car car1 = new Car("Ford", "Falcon", 2014);

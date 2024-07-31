@@ -1,6 +1,8 @@
-package week2;
+package com.rmit.week2.Pets;
 
 public class Pet {
+    // ...
+}
     private String name;
     private int age;
     private Person owner;

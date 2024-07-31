@@ -1,4 +1,4 @@
-package week2;
+package com.rmit.week2.Pets;
 
 public class RunPet {
     public static void main(String[] args) {

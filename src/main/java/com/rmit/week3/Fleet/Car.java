@@ -1,4 +1,4 @@
-package fleet;
+package com.rmit.week3.Fleet;
 /*class Car will use overloaded constructors. Each constructor can use
  * another existing constructor. It's called constructor chaining
  */

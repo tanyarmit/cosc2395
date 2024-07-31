@@ -1,4 +1,4 @@
-package week2;
+package com.rmit.week2.Uni;
 
 public class Person {
     protected String name;

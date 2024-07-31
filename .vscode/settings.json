@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "week3/Fleet",
+        "src/main/java/com/rmit/week3/Fleet/fleet"
+    ]
+}

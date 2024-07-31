@@ -1,4 +1,4 @@
-package week2;
+package com.rmit.week2.Uni;
 
 public class RunStudent {
     public static void main(String[] args) {

@@ -1,3 +1,4 @@
+package com.rmit.week1.CarStaticCounter;
 /** Car1 will have set methods and toString()
   */
 public class Car{

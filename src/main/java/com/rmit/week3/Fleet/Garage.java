@@ -1,4 +1,4 @@
-package fleet;
+package com.rmit.week3.Fleet;
 
 import java.util.Scanner;
 

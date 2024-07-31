@@ -1,4 +1,4 @@
-package week2;
+package com.rmit.week2.Uni;
 
 public class Employee extends Person {
     private String office;
