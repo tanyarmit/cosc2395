@@ -1,8 +1,9 @@
 package com.rmit.week2.Pets;
 
+import com.rmit.week2.Uni.Person;
+
 public class Pet {
-    // ...
-}
+    // ... instance variables
     private String name;
     private int age;
     private Person owner;

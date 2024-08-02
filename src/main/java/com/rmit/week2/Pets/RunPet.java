@@ -1,5 +1,7 @@
 package com.rmit.week2.Pets;
 
+import com.rmit.week2.Uni.Person;
+
 public class RunPet {
     public static void main(String[] args) {
         Person person = new Person("John", 30, "123 Main St");
