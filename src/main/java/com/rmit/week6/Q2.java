@@ -6,8 +6,8 @@ public class Q2 {
             System.out.println("Statement 1");
             System.out.println("Statement 2" + (10 / 0));
             System.out.println("Statement 3");
-        } catch (IndexOutOfBoundsException ex) {
-            // } catch (ArithmeticException ex1) {
+            // } catch (IndexOutOfBoundsException ex) {
+        } catch (ArithmeticException ex1) {
             // } catch (RuntimeException ex2) {
         }
         System.out.println("Statement 4");

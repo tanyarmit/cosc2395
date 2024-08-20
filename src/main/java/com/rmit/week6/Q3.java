@@ -4,9 +4,9 @@ public class Q3 {
     public static void main(String[] args) {
         try {
             int[] list = new int[10];
-            System.out.println("list[10] is " + list[10]);
-        } catch (ArithmeticException ex) {
-            System.out.println("ArithmeticException");
+            System.out.println("list[9] is " + list[9]);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("ArrayIndexOutOfBoundsException");
         } catch (RuntimeException ex) {
             System.out.println("RuntimeException");
         } catch (Exception ex) {
