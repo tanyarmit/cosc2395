@@ -26,7 +26,7 @@ public class Utils {
         while (userInput == -1) {
             System.out.println(message);
             try {
-                userInput = scanner.nextInt();
+                userInput = scanner.nextDouble();
                 scanner.nextLine();
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a double.");
