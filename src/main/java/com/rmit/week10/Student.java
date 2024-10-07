@@ -3,11 +3,13 @@ package com.rmit.week10;
 public class Student {
     private int id;
     private String name;
+    private static int counter = 0;
 
     // Constructor
     public Student(int id, String name) {
         this.id = id;
         this.name = name;
+        counter++;
     }
 
     // Getter for id

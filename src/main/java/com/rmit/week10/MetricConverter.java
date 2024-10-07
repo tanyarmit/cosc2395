@@ -1,9 +1,18 @@
 package com.rmit.week10;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class MetricConverter {
 
@@ -51,6 +60,7 @@ public class MetricConverter {
 
                     // Append the result to the text area
                     textArea.append(milesStr + " miles = " + kmStr + " kilometers\n");
+                    textField.setText(""); // Clear the text field
 
                 } catch (NumberFormatException ex) {
                     // Handle invalid input
