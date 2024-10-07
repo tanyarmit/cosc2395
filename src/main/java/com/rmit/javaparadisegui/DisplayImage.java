@@ -15,24 +15,23 @@ public class DisplayImage extends JPanel {
     jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     jf.setBounds(10, 10, 200, 200);
     JTextField tf = new JTextField(10);
-    String fileName1 = "../images/mr1.jpg";
-    String fileName = "mr1.jpg";
+    String fileName = "images/cross.gif";
     ImageIcon icon = new ImageIcon(fileName);
-    if (icon == null) 
+    if (icon == null)
       tf.setText("icon = null");
     else
       tf.setText("icon != null");
- 
+
     JLabel lblFrame = new JLabel("Looking for icon");
     lblFrame.setIcon(icon);
     jf.add(lblFrame, BorderLayout.CENTER);
     jf.add(tf, BorderLayout.SOUTH);
     jf.setVisible(true);
-    //JOptionPane.showMessageDialog(
-    //        null,
-    //        fileName,
-    //        "Java Paradise", JOptionPane.INFORMATION_MESSAGE,
-    //        icon);
+    // JOptionPane.showMessageDialog(
+    // null,
+    // fileName,
+    // "Java Paradise", JOptionPane.INFORMATION_MESSAGE,
+    // icon);
 
   }
 }
