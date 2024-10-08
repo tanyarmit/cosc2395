@@ -1,17 +1,16 @@
 
 package com.rmit.javaparadisegui;
 
-import java.util.*;
-import java.io.*;
-import java.time.*;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  *
  * @author eddie
  */
 public class Booking implements Serializable {
-  
-   private int bookingId;
+
+    private int bookingId;
     private Customer customer;
     private Room room;
     private LocalDate startDate;
@@ -48,6 +47,10 @@ public class Booking implements Serializable {
         return bookingId;
     }
 
+    public void setBookingId() {
+        this.bookingId = nextID++;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -79,7 +82,6 @@ public class Booking implements Serializable {
     public void setDateFromString(String dateStr) {// old code
         startDate = LocalDate.parse(dateStr);
     }
-
 
     public void setDate(LocalDate localDate) {
         startDate = localDate;
@@ -116,10 +118,11 @@ public class Booking implements Serializable {
     }
 
     public String toString() {
-        return "<html>" + "<br />" + "Booking ID: " + bookingId + "<br />" + "Customer " + customer.toString() + "<br />" + " Start date: " + startDate
+        return "<html>" + "<br />" + "Booking ID: " + bookingId + "<br />" + "Customer " + customer.toString()
+                + "<br />" + " Start date: " + startDate
                 + ", duration: " + duration + "<br />" + room.toString() + "<br />" + "</html>";
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -129,13 +132,13 @@ public class Booking implements Serializable {
             return false;
         }
         Booking booking = (Booking) o;
-        return bookingId == booking.bookingId;
+        return (bookingId == booking.bookingId && customer.equals(booking.customer) && room.equals(booking.room)
+                && startDate.equals(booking.startDate) && duration == booking.duration);
     }
-    
+
     @Override
     public int hashCode() {
         return 1;
     }
 
 }
-

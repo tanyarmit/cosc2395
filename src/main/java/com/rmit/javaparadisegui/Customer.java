@@ -28,6 +28,10 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
+    public void setCustId() {
+        this.custId = nextID++;
+    }
+
     @Override
     public String toString() {
         return "Customer ID: " + custId + ", name: " + name;
@@ -42,9 +46,9 @@ public class Customer implements Serializable {
             return false;
         }
         Customer customer = (Customer) o;
-        return custId == customer.custId && name.equals(customer.name);
+        return custId == customer.custId;
     }
-    
+
     @Override
     public int hashCode() {
         return 1;

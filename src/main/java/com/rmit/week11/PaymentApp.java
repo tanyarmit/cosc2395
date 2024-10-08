@@ -1,9 +1,19 @@
 package com.rmit.week11;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class PaymentApp extends JFrame {
     // GUI components
@@ -39,6 +49,7 @@ public class PaymentApp extends JFrame {
         // Create the combo box for payment method selection
         String[] paymentMethods = { "Visa", "MasterCard", "PayPal" };
         paymentMethodCombo = new JComboBox<>(paymentMethods);
+        paymentMethodCombo.setSelectedIndex(1); // Set MasterCard as default
 
         // Create the pay button
         payButton = new JButton("Pay");

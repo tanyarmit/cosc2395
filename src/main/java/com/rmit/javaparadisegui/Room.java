@@ -64,7 +64,12 @@ public class Room implements Serializable {
     }
 
     public String toString() {
-        return "Room #: " + roomNo + ", type: " + type + ", price per day: " + pricePerDay + ", available?  " + availability;
+        return "Room #: " + roomNo + ", type: " + type + ", price per day: " + pricePerDay + ", available?  "
+                + availability;
+    }
+
+    public void setRoomNo() {
+        this.roomNo = nextId++;
     }
 
     @Override
@@ -78,7 +83,7 @@ public class Room implements Serializable {
         Room room = (Room) o;
         return roomNo == room.roomNo;
     }
-    
+
     @Override
     public int hashCode() {
         return 1;

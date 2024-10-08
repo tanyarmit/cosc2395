@@ -1,12 +1,35 @@
 package com.rmit.javaparadisegui;
 
-import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
-import java.util.*;
-import java.io.*;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerModel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -21,7 +44,7 @@ public class BookingTab extends JPanel implements ActionListener {
     JPanel inputPanel, displayPanel, buttonPanel, pnlCheckOut;
     JButton btnRemove, btnCheckOut, btnClear, btnAdd, btnSave, btnRead;
     JTextField txtTotalAmount, txtDays;
-    private final String[] paymentsLabels = {"Visa", "Master card", "Cash", "Pay later"};
+    private final String[] paymentsLabels = { "Visa", "Master card", "Cash", "Pay later" };
     DefaultListModel<Booking> bookingModel;
     JList<Booking> bookingList;
     JRadioButton[] payments;
@@ -39,7 +62,7 @@ public class BookingTab extends JPanel implements ActionListener {
         add(displayPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        fixCheckOutPanel();  // puts it on the east side
+        fixCheckOutPanel(); // puts it on the east side
     }
 
     private JPanel getDisplayPanel() {
@@ -69,7 +92,7 @@ public class BookingTab extends JPanel implements ActionListener {
         JPanel pnlPaymentOpt = new JPanel();
         pnlPaymentOpt.setBorder(new TitledBorder("Payment options"));
         pnlPaymentOpt.setLayout(new GridLayout(4, 1));
-        //button group  
+        // button group
         // paymentsLabels = {"Visa", "Master card", "Cash", "Pay later"};
         ButtonGroup group = new ButtonGroup();
         for (int i = 0; i < 4; i++) {
@@ -106,16 +129,16 @@ public class BookingTab extends JPanel implements ActionListener {
         lblDate = new JLabel("Enter date as yyyy-mm-dd");
         lblDays = new JLabel("Duration");
         datePanel = new DatePanel();
-        //txtDate = new JTextField(10);
+        // txtDate = new JTextField(10);
         txtDays = new JTextField(10);
-        //lblName = new JLabel("Name");
-        //txtName = new JTextField(10);
+        // lblName = new JLabel("Name");
+        // txtName = new JTextField(10);
 
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(2, 2, 10, 10));
         inputPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
         inputPanel.add(lblDate);
-        //inputPanel.add(txtDate);
+        // inputPanel.add(txtDate);
         inputPanel.add(datePanel);
         inputPanel.add(lblDays);
         inputPanel.add(txtDays);
@@ -156,17 +179,17 @@ public class BookingTab extends JPanel implements ActionListener {
         b.setTotalCost(totalCost);
         txtTotalAmount.setText(" " + totalCost);
         bookingModel.removeElement(b);
-        // to do - fix payment options 
-        //for (int i = 0; i < 3; i++) {
-        //    if (payments[i].isSelected()) {
-        //        lblIsPaid.setText("Paid by " + payments[i].getText());
-        //        b.setIsPaid(true);
-        //    }
-        //    if (payments[3].isSelected()) {
-        //        lblIsPaid.setText("Customer will pay later");
-        //        b.setIsPaid(false);
-        //    }
-        //}
+        // to do - fix payment options
+        // for (int i = 0; i < 3; i++) {
+        // if (payments[i].isSelected()) {
+        // lblIsPaid.setText("Paid by " + payments[i].getText());
+        // b.setIsPaid(true);
+        // }
+        // if (payments[3].isSelected()) {
+        // lblIsPaid.setText("Customer will pay later");
+        // b.setIsPaid(false);
+        // }
+        // }
         return totalCost;
     }
 
@@ -194,12 +217,12 @@ public class BookingTab extends JPanel implements ActionListener {
 
     private void add() {
         Booking booking = null;
-        //get room and customer from the lists
+        // get room and customer from the lists
         Room room = roomTab.roomList.getSelectedValue();
         Customer customer = customerTab.customerList.getSelectedValue();
         if (room != null && customer != null) {
             booking = new Booking(room, customer);
-            //read other data
+            // read other data
             try {
                 LocalDate date = datePanel.getDate();
                 booking.setDate(date);
@@ -214,7 +237,7 @@ public class BookingTab extends JPanel implements ActionListener {
                 booking.setDays(days);
                 bookingModel.addElement(booking);
                 room.setAvailability(false);
-                //clear the fields
+                // clear the fields
                 txtDays.setText("");
                 roomTab.roomList.clearSelection();
                 customerTab.customerList.clearSelection();
@@ -325,24 +348,27 @@ public class BookingTab extends JPanel implements ActionListener {
                     Booking b = (Booking) object;
                     // Add only if not there
                     if (!bookingModel.contains(b)) {
+                        b.setBookingId();
                         bookingModel.addElement(b);
                     }
 
                     // Add customer if not there
                     Customer c = b.getCustomer();
                     if (!customerTab.customerModel.contains(c)) {
+                        c.setCustId();
                         customerTab.customerModel.addElement(c);
                     }
                     // Add only if not there
                     Room r = b.getRoom();
                     if (!roomTab.roomModel.contains(r)) {
+                        r.setRoomNo();
                         r.setAvailability(false);
                         roomTab.roomModel.addElement(r);
                     } else {
                         roomTab.searchRoomsByRoomNo(r.getRoomNo()).setAvailability(false);
                     }
 
-                    //System.out.println(b);
+                    // System.out.println(b);
                 } catch (EOFException eof) {
                     break;
                 }
@@ -366,4 +392,3 @@ public class BookingTab extends JPanel implements ActionListener {
     }
 
 }// end BookingTab
-
