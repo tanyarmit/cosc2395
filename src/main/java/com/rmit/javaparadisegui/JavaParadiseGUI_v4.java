@@ -1,7 +1,7 @@
 package com.rmit.javaparadisegui;
 
-import java.awt.*;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 /**
  *

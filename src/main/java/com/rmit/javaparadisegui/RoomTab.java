@@ -36,7 +36,7 @@ public class RoomTab extends JPanel implements ActionListener {
     }
 
     private JPanel getInputPanel() {
-        JPanel inputPanel = new JPanel();  // this inputPanel is a local variable
+        JPanel inputPanel = new JPanel(); // this inputPanel is a local variable
 
         lblRoomName = new JLabel("Room name: ");
         inputPanel.add(lblRoomName);
@@ -91,7 +91,7 @@ public class RoomTab extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
         Object o = ae.getSource();
-        if (o instanceof JButton) { //only required if other widgets have action listeners 
+        if (o instanceof JButton) { // only required if other widgets have action listeners
             handleButton((JButton) o);
         }
     }
@@ -122,7 +122,7 @@ public class RoomTab extends JPanel implements ActionListener {
             try {
                 cpd = Double.parseDouble(scpd);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Please enter a valid cost pere day.", "Input Error",
+                JOptionPane.showMessageDialog(null, "Please enter a valid cost per day.", "Input Error",
                         JOptionPane.ERROR_MESSAGE);
             }
             if (cpd > 0) {
@@ -131,20 +131,20 @@ public class RoomTab extends JPanel implements ActionListener {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please enter a room name and a valid cost pere day.", "Input Error",
-                        JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public void populateRooms() {
-        Room[] arrOfRooms = {new Room("Single"), new Room("Double"),
-            new Room("Single"), new Room("Double")};
+        Room[] arrOfRooms = { new Room("Single"), new Room("Double"),
+                new Room("Single"), new Room("Double") };
         for (Room r : arrOfRooms) {
             roomModel.addElement(r);
         }
         Room r1 = new Room("Single", 200.00);
         roomModel.addElement(r1);
     }
-    
+
     /**
      * following code just for testing this panel
      *

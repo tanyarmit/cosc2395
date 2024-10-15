@@ -111,6 +111,10 @@ public class Booking implements Serializable {
         return cost;
     }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     public int compareTo(Booking b) {
         LocalDate endDate = this.getEndDate();
         LocalDate endDate1 = b.getEndDate();

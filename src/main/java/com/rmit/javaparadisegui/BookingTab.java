@@ -346,17 +346,12 @@ public class BookingTab extends JPanel implements ActionListener {
                 try {
                     Object object = ois.readObject();
                     Booking b = (Booking) object;
-                    // Add only if not there
-                    if (!bookingModel.contains(b)) {
-                        b.setBookingId();
-                        bookingModel.addElement(b);
-                    }
-
                     // Add customer if not there
                     Customer c = b.getCustomer();
                     if (!customerTab.customerModel.contains(c)) {
                         c.setCustId();
                         customerTab.customerModel.addElement(c);
+                        b.setCustomer(c);
                     }
                     // Add only if not there
                     Room r = b.getRoom();
@@ -364,8 +359,14 @@ public class BookingTab extends JPanel implements ActionListener {
                         r.setRoomNo();
                         r.setAvailability(false);
                         roomTab.roomModel.addElement(r);
+                        b.setRoomNo(r);
                     } else {
                         roomTab.searchRoomsByRoomNo(r.getRoomNo()).setAvailability(false);
+                    }
+                    // Add only if not there
+                    if (!bookingModel.contains(b)) {
+                        b.setBookingId();
+                        bookingModel.addElement(b);
                     }
 
                     // System.out.println(b);
