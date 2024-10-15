@@ -83,9 +83,7 @@ public class CustomerTab extends JPanel implements ActionListener {
         //read the data
         String name = txtName.getText();
         if (!name.equals("")) {
-            //System.out.println(name);
             Customer customer = new Customer(name);
-            System.out.println(customer);
             customerModel.addElement(customer);
             //clear the text fields
             txtName.setText("");

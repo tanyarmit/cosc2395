@@ -13,9 +13,6 @@ public class JavaParadiseGUI_v4 extends JFrame {
   // ImageIcon("images/double small.jpeg"),
   // new ImageIcon("images/double business small.jpg"), new
   // ImageIcon("images/single view small.jpg")};
-  Room rfound = null;
-
-  Booking booking = null;
 
   JTabbedPane tabs = new JTabbedPane();
   // tabs

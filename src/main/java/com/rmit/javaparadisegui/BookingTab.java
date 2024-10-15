@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
@@ -66,10 +67,10 @@ public class BookingTab extends JPanel implements ActionListener {
     }
 
     private JPanel getDisplayPanel() {
-        JPanel displayPanel = new JPanel();
+        displayPanel = new JPanel();
 
         bookingModel = new DefaultListModel<>();
-        bookingList = new JList(bookingModel);
+        bookingList = new JList<Booking>(bookingModel);
         JScrollPane sp = new JScrollPane(bookingList);
         displayPanel.add(sp);
 
@@ -107,7 +108,7 @@ public class BookingTab extends JPanel implements ActionListener {
      * generate the checkoutpanel and place it in JFrame East
      */
     private void fixCheckOutPanel() {
-        JPanel pnlCheckOut = new JPanel();
+        pnlCheckOut = new JPanel();
         pnlCheckOut.setLayout(new GridLayout(2, 1));
 
         lblIsPaid = new JLabel();
@@ -129,16 +130,12 @@ public class BookingTab extends JPanel implements ActionListener {
         lblDate = new JLabel("Enter date as yyyy-mm-dd");
         lblDays = new JLabel("Duration");
         datePanel = new DatePanel();
-        // txtDate = new JTextField(10);
         txtDays = new JTextField(10);
-        // lblName = new JLabel("Name");
-        // txtName = new JTextField(10);
 
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(2, 2, 10, 10));
         inputPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
         inputPanel.add(lblDate);
-        // inputPanel.add(txtDate);
         inputPanel.add(datePanel);
         inputPanel.add(lblDays);
         inputPanel.add(txtDays);
@@ -197,6 +194,7 @@ public class BookingTab extends JPanel implements ActionListener {
         bookingModel.addElement(booking);
     }
 
+    @Override
     public void actionPerformed(ActionEvent ae) {
         Object o = ae.getSource();
         JButton jb = (JButton) o;
@@ -231,7 +229,8 @@ public class BookingTab extends JPanel implements ActionListener {
                 if (daysStr != "") {
                     days = Integer.parseInt(daysStr);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Please enter duration in days");
+                    JOptionPane.showMessageDialog(null, "Please enter duration in days", "Input Error",
+                            JOptionPane.ERROR_MESSAGE);
                     txtDays.setText("Please enter duration in days");
                 }
                 booking.setDays(days);
@@ -242,11 +241,16 @@ public class BookingTab extends JPanel implements ActionListener {
                 roomTab.roomList.clearSelection();
                 customerTab.customerList.clearSelection();
             } catch (Exception ee) {
-                System.out.println(ee.getMessage());
+                JOptionPane.showMessageDialog(null,
+                        "Please enter a valid date and duration", "Input Error",
+                        JOptionPane.ERROR_MESSAGE);
+
                 Booking.nextID--;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a room and a customer from lists");
+            JOptionPane.showMessageDialog(null,
+                    "Please select a room and a customer from lists", "Input Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -264,7 +268,9 @@ public class BookingTab extends JPanel implements ActionListener {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a booking from the list");
+            JOptionPane.showMessageDialog(null,
+                    "Please select a booking from the list", "Input Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -330,7 +336,7 @@ public class BookingTab extends JPanel implements ActionListener {
             for (Object b : bookingModel.toArray()) {
                 oos.writeObject((Booking) b);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
