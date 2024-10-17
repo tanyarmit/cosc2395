@@ -81,7 +81,7 @@ public class Room implements Serializable {
             return false;
         }
         Room room = (Room) o;
-        return roomNo == room.roomNo;
+        return roomNo == room.roomNo && type.equals(room.type);
     }
 
     @Override

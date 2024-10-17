@@ -46,7 +46,7 @@ public class Customer implements Serializable {
             return false;
         }
         Customer customer = (Customer) o;
-        return custId == customer.custId;
+        return custId == customer.custId && name.equals(customer.name);
     }
 
     @Override
